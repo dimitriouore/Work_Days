@@ -1,0 +1,40 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@style/preference">
+
+    <PreferenceCategory app:title="@string/data_settings">
+
+        <EditTextPreference
+            android:defaultValue="30"
+            android:key="wage"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/set_money"
+            app:icon="@drawable/monetization"
+            android:inputType="number"/>
+
+        <Preference
+            app:key="delete_data"
+            app:title="@string/data_delete"
+            app:summary="@string/data_delete_info"
+            app:icon="@drawable/delete" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/app_information">
+
+        <Preference
+            app:key="github"
+            android:title="@string/github"
+            app:summary="@string/github_info"
+            android:icon="@drawable/ic_github" />
+
+        <Preference
+            app:key="info"
+            app:title="@string/version"
+            app:icon="@drawable/info"
+            app:selectable="false"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

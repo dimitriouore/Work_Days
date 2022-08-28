@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">Work Days</string>
+
+    <string name="date_choose">Choose a date</string>
+    <string name="save">Save</string>
+    <string name="shift">Shift :</string>
+    <string name="night">Night</string>
+    <string name="day">Day</string>
+    <string name="half">Half</string>
+    <string name="Double">Double</string>
+    <string name="day_night">Split</string>
+    <string name="error">Choose a shift</string>
+    <string name="money_error">Set a valid wage in settings</string>
+    <string name="saved">Saved</string>
+    <string name="deleted">Deleted</string>
+    <string name="settings">Settings</string>
+    <string name="calendar">Calendar</string>
+    <string name="back">Back</string>
+    <string name="no_save">No saved records</string>
+    <string name="paid">Paid</string>
+    <string name="Not_paid">Not paid</string>
+
+    <string name="data_settings">Data settings</string>
+    <string name="data_delete">Delete data</string>
+    <string name="data_delete_info">Delete all application\'s saved data</string>
+    <string name="app_information">App Information</string>
+    <string name="version">Version</string>
+    <string name="delete_all">Are you sure you want to delete all saved data?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="set_money">Set your daily wage</string>
+    <string name="current_wage">Current wage value is</string>
+    <string name="github">View Github page</string>
+    <string name="github_info">View the source code of the app</string>
+    <string name="github_url" translatable="false">https://github.com/dimitriouore/Work_Days</string>
+
+    <string name="payment_info">Payment info</string>
+    <string name="worked_days">Days you have worked: </string>
+    <string name="paid_days">Days you have been paid: </string>
+    <string name="total_money">Total money earned</string>
+    <string name="year_choose">Choose a year</string>
+    <string name="details">Details of year</string>
+
+    <string name="january">January</string>
+    <string name="february">February</string>
+    <string name="march">March</string>
+    <string name="april">April</string>
+    <string name="may">May</string>
+    <string name="june">June</string>
+    <string name="july">July</string>
+    <string name="august">August</string>
+    <string name="september">September</string>
+    <string name="october">October</string>
+    <string name="november">November</string>
+    <string name="december">December</string>
+
+    <string-array name="list">
+        <item>@string/error</item>
+        <item>@string/day</item>
+        <item>@string/night</item>
+        <item>@string/half</item>
+        <item>@string/Double</item>
+        <item>@string/day_night</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>

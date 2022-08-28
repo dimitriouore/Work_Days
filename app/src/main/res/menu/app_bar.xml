@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/app_bar_settings"
+        android:icon="@drawable/settings"
+        app:showAsAction="ifRoom"
+        android:iconTint="@color/white"
+        android:title="@string/settings"/>
+
+    <item
+        android:id="@+id/app_bar_calendar"
+        android:icon="@drawable/calendar"
+        app:showAsAction="ifRoom"
+        android:iconTint="@color/white"
+        android:title="@string/calendar" />
+
+    <item
+        android:id="@+id/app_bar_money"
+        android:icon="@drawable/euro"
+        app:showAsAction="ifRoom"
+        android:iconTint="@color/white"
+        android:title="@string/payment_info"
+        android:visible="false"/>
+
+    <item
+        android:id="@+id/app_bar_back"
+        android:visible="false"
+        android:icon="@drawable/close"
+        app:showAsAction="always"
+        android:title="@string/back" />
+
+</menu>

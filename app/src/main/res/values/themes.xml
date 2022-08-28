@@ -1,0 +1,44 @@
+<resources>
+    <style name="ThemeWorkDays" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+
+        <item name="colorSecondary">@color/black</item>
+        <item name="colorSecondaryVariant">@color/white</item>
+
+        <item name="android:statusBarColor">@color/purple_700</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+    </style>
+
+    <style name="My_Date_picker">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="android:fontFamily">@font/raleway_semibold</item>
+    </style>
+
+    <style name="preference">
+        <item name="android:fontFamily">@font/raleway_semibold</item>
+        <item name="android:background">@color/purple_500</item>
+        <item name="android:textColorSecondary">#CCC</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    
+    <style name="material_date" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <item name="materialCalendarHeaderToggleButton">@style/Widget.AppTheme.MaterialCalendar.HeaderToggleButton</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="fontFamily">@font/raleway_semibold</item>
+        <item name="android:headerBackground">@color/purple_500</item>
+        <item name="colorControlActivated">@color/purple_500</item>
+        <item name="colorAccent">@color/purple_500</item>
+        <item name="colorPrimary">@color/red_600</item>
+        <item name="rangeFillColor">@color/red_600</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
+    <style name="Widget.AppTheme.MaterialCalendar.HeaderToggleButton" parent="Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton">
+    <item name="android:visibility">gone</item>
+    </style>
+
+</resources>
