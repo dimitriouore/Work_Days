@@ -1,6 +1,5 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:theme="@style/preference">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory app:title="@string/data_settings">
 
@@ -11,7 +10,7 @@
             android:singleLine="true"
             android:title="@string/set_money"
             app:icon="@drawable/monetization"
-            android:inputType="number"/>
+            android:inputType="number" />
 
         <Preference
             app:key="delete_data"

@@ -10,6 +10,8 @@
         <item name="android:statusBarColor">@color/purple_700</item>
         <item name="android:windowLightStatusBar">false</item>
 
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+
     </style>
 
     <style name="My_Date_picker">
@@ -18,27 +20,15 @@
         <item name="android:fontFamily">@font/raleway_semibold</item>
     </style>
 
-    <style name="preference">
-        <item name="android:fontFamily">@font/raleway_semibold</item>
-        <item name="android:background">@color/purple_500</item>
-        <item name="android:textColorSecondary">#CCC</item>
-        <item name="android:textColor">#FFFFFF</item>
-    </style>
-    
-    <style name="material_date" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
-        <item name="materialCalendarHeaderToggleButton">@style/Widget.AppTheme.MaterialCalendar.HeaderToggleButton</item>
-        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
-        <item name="fontFamily">@font/raleway_semibold</item>
-        <item name="android:headerBackground">@color/purple_500</item>
-        <item name="colorControlActivated">@color/purple_500</item>
-        <item name="colorAccent">@color/purple_500</item>
-        <item name="colorPrimary">@color/red_600</item>
-        <item name="rangeFillColor">@color/red_600</item>
-        <item name="colorOnPrimary">@color/white</item>
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
     </style>
 
-    <style name="Widget.AppTheme.MaterialCalendar.HeaderToggleButton" parent="Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton">
-    <item name="android:visibility">gone</item>
+    <style name="AppModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/rounded_dialog</item>
     </style>
+
 
 </resources>
