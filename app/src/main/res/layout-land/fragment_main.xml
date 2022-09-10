@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_700"
     android:padding="8dp"
     tools:context=".MainFragment"
     tools:ignore="ScrollViewCount">
@@ -17,19 +16,19 @@
             android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/raleway_semibold"
             android:text="@string/date_choose"
-            android:layout_marginStart="45dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/white" />
 
         <DatePicker
-            android:layout_below="@+id/textView1"
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_below="@+id/textView1"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="15dp"
             android:calendarViewShown="false"
@@ -63,28 +62,23 @@
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:backgroundTint="@color/white"
-                android:popupBackground="@color/purple_500" />
+                android:layout_marginStart="10dp" />
 
             </LinearLayout>
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_action"
+        <Button
+            android:id="@+id/button_action"
+            style="@style/Widget.Material3.CardView.Filled"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/lay"
             android:layout_marginStart="50dp"
             android:layout_marginTop="15dp"
             android:layout_toEndOf="@+id/date"
-            android:backgroundTint="@color/purple_800"
             android:fontFamily="@font/raleway_semibold"
             android:text="@string/save"
             android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:textAllCaps="false" />
     </RelativeLayout>
 </ScrollView>
 

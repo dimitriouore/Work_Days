@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -14,7 +15,6 @@ import androidx.fragment.app.Fragment;
 
 import com.dimitriou.workdays.Database.Days;
 import com.dimitriou.workdays.Database.Repository;
-import com.google.android.material.chip.Chip;
 
 public class MainFragment extends Fragment {
 
@@ -55,16 +55,17 @@ public class MainFragment extends Fragment {
             }
         });
 
-        Chip save = view.findViewById(R.id.chip_action);
+        Button save = view.findViewById(R.id.button_action);
         save.setOnClickListener(v -> {
-            if(type.equals(getString(R.string.error))){
-                Toast.makeText(requireContext(),R.string.error,Toast.LENGTH_SHORT).show();
-            }else {
+            if (type.equals(getString(R.string.error))) {
+                Toast.makeText(requireContext(), R.string.error, Toast.LENGTH_SHORT).show();
+            } else {
                 Days days = new Days(String.valueOf(datePicker.getDayOfMonth()), String.valueOf(datePicker.getMonth() + 1),
                         String.valueOf(datePicker.getYear()), type, "No");
                 Repository repository = new Repository(requireActivity().getApplication());
                 repository.DaysInsert(days);
-                Toast.makeText(requireContext(),R.string.saved,Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(requireContext(), R.string.saved, Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -1,17 +1,9 @@
 <resources>
-    <style name="ThemeWorkDays" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="ThemeWorkDays" parent="Theme.Material3.DynamicColors.Dark">
 
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-
-        <item name="colorSecondary">@color/black</item>
-        <item name="colorSecondaryVariant">@color/white</item>
-
-        <item name="android:statusBarColor">@color/purple_700</item>
         <item name="android:windowLightStatusBar">false</item>
 
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
-
     </style>
 
     <style name="My_Date_picker">
@@ -21,12 +13,12 @@
     </style>
 
     <style name="AppBottomSheetDialogTheme"
-        parent="Theme.Design.BottomSheetDialog">
+        parent="ThemeOverlay.Material3.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/AppModalStyle</item>
     </style>
 
     <style name="AppModalStyle"
-        parent="Widget.Design.BottomSheet.Modal">
+        parent="Widget.Material3.BottomSheet.Modal">
         <item name="android:background">@drawable/rounded_dialog</item>
     </style>
 

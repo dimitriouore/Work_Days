@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_700"
     android:padding="8dp"
     tools:context=".MainFragment"
     tools:ignore="ScrollViewCount">
@@ -59,23 +57,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:backgroundTint="@color/white"
-                android:popupBackground="@color/purple_500" />
+                />
         </LinearLayout>
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_action"
+        <Button
+            style="@style/Widget.Material3.CardView.Filled"
+            android:id="@+id/button_action"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="15dp"
-            android:backgroundTint="@color/purple_800"
             android:fontFamily="@font/raleway_semibold"
-            android:text="@string/save"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/white"
-            android:elevation="3dp"
-            android:textStyle="bold" />
+            android:text="@string/save"/>
     </LinearLayout>
 </ScrollView>

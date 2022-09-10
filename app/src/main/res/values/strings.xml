@@ -17,14 +17,13 @@
     <string name="calendar">Calendar</string>
     <string name="back">Back</string>
     <string name="no_save">No saved records</string>
-    <string name="paid">Paid</string>
-    <string name="Not_paid">Not paid</string>
 
     <string name="data_settings">Data settings</string>
     <string name="data_delete">Delete data</string>
     <string name="data_delete_info">Delete all application\'s saved data</string>
     <string name="app_information">App Information</string>
     <string name="version">Version</string>
+    <string name="warning">Warning</string>
     <string name="delete_all">Are you sure you want to delete all saved data?</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
@@ -38,7 +37,6 @@
     <string name="worked_days">Days you have worked: </string>
     <string name="paid_days">Days you have been paid: </string>
     <string name="total_money">Total money earned</string>
-    <string name="year_choose">Choose a year</string>
     <string name="details">Details of year</string>
 
     <string name="january">January</string>

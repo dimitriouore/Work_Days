@@ -17,6 +17,7 @@ import androidx.preference.PreferenceManager;
 
 import com.dimitriou.workdays.Database.Repository;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.android.material.elevation.SurfaceColors;
 
 public class BottomSheet extends BottomSheetDialogFragment {
 

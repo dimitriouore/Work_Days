@@ -24,8 +24,6 @@
     <string name="half">Μισό</string>
     <string name="Double">Διπλό</string>
     <string name="day_night">Σπαστό</string>
-    <string name="paid">Πληρώθηκε</string>
-    <string name="Not_paid">Δεν πληρώθηκε</string>
     <string name="payment_info">Πληροφορίες πληρωμής</string>
     <string name="worked_days">"Μέρες που έχεις δουλέψει: "</string>
     <string name="paid_days">"Μέρες που έχεις πληρωθεί: "</string>
@@ -33,7 +31,6 @@
     <string name="set_money">Επέλεξε το ημερομήσθιο σου</string>
     <string name="money_error">Επιλεξτε έγκυρο ημερομήσθιο στις ρυθμίσεις</string>
     <string name="current_wage">"Το ημερομήσθιο είναι "</string>
-    <string name="year_choose">Επέλεξε έτος</string>
     <string name="details">Λεπτομέριες έτους</string>
     <string name="january">Ιανουάριος</string>
     <string name="february">Φεβρουάριος</string>
@@ -49,4 +46,5 @@
     <string name="december">Δεκέμβριος</string>
     <string name="github">Προβολή του Github</string>
     <string name="github_info">Προβολή του κώδικα της εφαρμογής</string>
+    <string name="warning">Προσοχή</string>
 </resources>

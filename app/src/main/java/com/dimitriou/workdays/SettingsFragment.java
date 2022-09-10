@@ -16,6 +16,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
 import com.dimitriou.workdays.Database.Repository;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
@@ -33,7 +34,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         if (wage != null) {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireActivity());
             String value = sharedPreferences.getString("wage", "30");
-            if(value.equals("")){
+            if (value.equals("")) {
                 value = "30";
             }
             wage.setSummary(getString(R.string.current_wage) + " " + value + "€");
@@ -42,18 +43,19 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         Preference delete = findPreference("delete_data");
         assert delete != null;
         delete.setOnPreferenceClickListener(preference -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
-            builder.setTitle(R.string.delete_all)
-                    .setIcon(R.drawable.warning)
+            MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(requireContext());
+            dialogBuilder.setIcon(R.drawable.warning)
+                    .setTitle(getString(R.string.warning))
+                    .setMessage(getString(R.string.delete_all))
                     .setPositiveButton(R.string.delete, (dialog, which) -> {
                         Repository repository = new Repository(requireActivity().getApplication());
                         repository.DaysDeleteAll();
                         Toast.makeText(requireContext(), R.string.deleted, Toast.LENGTH_SHORT).show();
                     })
-                    .setNegativeButton(R.string.cancel, (dialog, which) -> {
-
-                    }).show();
+                    .setNegativeButton(R.string.cancel, (dialog, which) -> {})
+                    .show();
             return true;
+
         });
 
         Preference github = findPreference("github");

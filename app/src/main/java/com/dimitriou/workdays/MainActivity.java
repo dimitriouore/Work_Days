@@ -8,15 +8,16 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.elevation.SurfaceColors;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getWindow().setStatusBarColor(SurfaceColors.SURFACE_2.getColor(this));
         setTitle(R.string.app_name);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MainFragment()).commit();
     }
 
