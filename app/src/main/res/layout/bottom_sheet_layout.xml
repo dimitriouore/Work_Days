@@ -183,9 +183,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/spinner_year"
-                android:layout_marginStart="15dp"
-                android:backgroundTint="@color/white"
-                android:popupBackground="@color/purple_500" />
+                android:layout_marginStart="15dp" />
 
 
         </LinearLayout>
