@@ -12,14 +12,4 @@
         tools:listitem="@layout/recycler_item"
         android:splitMotionEvents="true"/>
 
-    <TextView
-        android:id="@+id/no_save_error"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/no_save"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textStyle="bold"
-        android:visibility="invisible"/>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

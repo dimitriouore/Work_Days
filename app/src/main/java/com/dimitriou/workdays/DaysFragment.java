@@ -38,14 +38,14 @@ public class DaysFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setHasFixedSize(true);
 
-        final DaysAdapter daysAdapter = new DaysAdapter();
+        final DaysAdapter daysAdapter = new DaysAdapter(requireContext());
         recyclerView.setAdapter(daysAdapter);
 
         ViewModel viewModel = new ViewModelProvider(this,
                 (ViewModelProvider.Factory) ViewModelProvider.AndroidViewModelFactory.getInstance(this.requireActivity().getApplication())).get(ViewModel.class);
         viewModel.getAllDays().observe(requireActivity(), daysAdapter::submitList);
 
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT ) {
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return false;
@@ -55,7 +55,7 @@ public class DaysFragment extends Fragment {
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 Repository repository = new Repository(requireActivity().getApplication());
                 repository.DaysDelete(daysAdapter.getDaysAt(viewHolder.getAdapterPosition()));
-                Toast.makeText(requireContext(),R.string.deleted,Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), R.string.deleted, Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
 
@@ -70,11 +70,12 @@ public class DaysFragment extends Fragment {
                 daysAdapter.getDaysAt(viewHolder.getAdapterPosition());
                 if (daysAdapter.getDaysAt(viewHolder.getAdapterPosition()).getPaid().equals("No")) {
                     repository.makePayYes(daysAdapter.getDaysAt(viewHolder.getAdapterPosition()).getId());
-                }else if (daysAdapter.getDaysAt(viewHolder.getAdapterPosition()).getPaid().equals("Yes")){
+                } else if (daysAdapter.getDaysAt(viewHolder.getAdapterPosition()).getPaid().equals("Yes")) {
                     repository.makePayNo(daysAdapter.getDaysAt(viewHolder.getAdapterPosition()).getId());
                 }
             }
         }).attachToRecyclerView(recyclerView);
+
         return view;
     }
 
@@ -88,7 +89,7 @@ public class DaysFragment extends Fragment {
         money.setVisible(true);
         money.setOnMenuItemClickListener(item12 -> {
             BottomSheet bottomSheet = new BottomSheet();
-            bottomSheet.show(requireActivity().getSupportFragmentManager(),"BottomSheet");
+            bottomSheet.show(requireActivity().getSupportFragmentManager(), "BottomSheet");
             return true;
         });
         MenuItem back = menu.findItem(R.id.app_bar_back);

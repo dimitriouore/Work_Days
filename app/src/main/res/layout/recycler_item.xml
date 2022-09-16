@@ -1,52 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/recycler_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
-    app:cardBackgroundColor="?attr/colorSurfaceVariant">
+    android:layout_marginStart="6dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="6dp"
+    app:cardBackgroundColor="?attr/colorSurfaceVariant"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/datePick"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/datePick"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/date_choose"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/shiftShow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/raleway_semibold"
+                android:maxLines="1"
+                android:text="@string/day"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/paid"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/raleway_semibold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                app:drawableStartCompat="@drawable/verified" />
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edit_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:enabled="false"
+            android:hint="@string/notes"
+            android:visibility="gone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:id="@+id/edit_text"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/time_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/date_choose"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/white" />
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone">
 
-        <TextView
-            android:id="@+id/shiftShow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:fontFamily="@font/raleway_semibold"
-            android:text="@string/day"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/white"
-            android:maxLines="1"/>
+            <Button
+                android:id="@+id/time_start"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:text="@string/time_start"
+                android:enabled="false"/>
 
-        <TextView
-            android:id="@+id/paid"
+            <Button
+                android:id="@+id/time_end"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:text="@string/time_end"
+                android:enabled="false"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/save_button"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/raleway_semibold"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/white"
-            app:drawableStartCompat="@drawable/verified"
-            android:layout_marginEnd="10dp"
-            android:visibility="gone"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/edit"
+            android:visibility="gone" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
 </androidx.cardview.widget.CardView>

@@ -20,7 +20,6 @@
     <string name="delete_all">Είστε σίγουροι ότι θέλετε να διαγράψετε όλα τα δεδομένα της εφαρμογής?</string>
     <string name="delete">Διαγραφή</string>
     <string name="cancel">Άκυρο</string>
-    <string name="no_save">Δεν υπάρχουν αποθηκευμένες ώρες</string>
     <string name="half">Μισό</string>
     <string name="Double">Διπλό</string>
     <string name="day_night">Σπαστό</string>
@@ -47,4 +46,11 @@
     <string name="github">Προβολή του Github</string>
     <string name="github_info">Προβολή του κώδικα της εφαρμογής</string>
     <string name="warning">Προσοχή</string>
+    <string name="notes">Σημειώσεις</string>
+    <string name="edit">Επεξεργασία</string>
+    <string name="time">Ώρες εργασίας</string>
+    <string name="time_start">Ώρα έναρξης</string>
+    <string name="time_end">Ώρα λήξης</string>
+    <string name="updated">Eνημερώθηκε</string>
+    <string name="time_error">Επιλέξτε μια έγκυρη ώρα έναρξης και λήξης</string>
 </resources>

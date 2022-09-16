@@ -26,12 +26,20 @@ public class Days {
     @ColumnInfo(name = "Pay")
     private final String paid;
 
-    public Days(String day, String month, String year, String type, String paid) {
+    @ColumnInfo(name = "Notes")
+    private String notes;
+
+    @ColumnInfo(name = "Time")
+    private String time;
+
+    public Days(String day, String month, String year, String type, String paid, String notes, String time) {
         this.day = day;
         this.month = month;
         this.year = year;
         this.type = type;
         this.paid = paid;
+        this.notes = notes;
+        this.time = time;
     }
 
     public int getId() {
@@ -60,5 +68,21 @@ public class Days {
 
     public String getPaid() {
         return paid;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

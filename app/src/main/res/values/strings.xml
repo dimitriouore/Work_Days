@@ -16,7 +16,13 @@
     <string name="settings">Settings</string>
     <string name="calendar">Calendar</string>
     <string name="back">Back</string>
-    <string name="no_save">No saved records</string>
+    <string name="notes">Notes</string>
+    <string name="edit">Edit</string>
+    <string name="time">Working hours</string>
+    <string name="time_start">Start time</string>
+    <string name="time_end">End time</string>
+    <string name="updated">Updated</string>
+    <string name="time_error">Select a valid start and end time</string>
 
     <string name="data_settings">Data settings</string>
     <string name="data_delete">Delete data</string>
