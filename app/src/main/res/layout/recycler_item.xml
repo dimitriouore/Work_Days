@@ -102,6 +102,14 @@
                 android:text="@string/time_end"
                 android:enabled="false"/>
 
+            <TextView
+                android:id="@+id/reset_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                app:drawableEndCompat="@drawable/ic_delete"
+                android:enabled="false"/>
+
         </LinearLayout>
 
         <Button

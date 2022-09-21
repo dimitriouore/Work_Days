@@ -2,7 +2,6 @@ package com.dimitriou.workdays;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +13,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -144,6 +144,15 @@ public class MainFragment extends Fragment {
                         endTime.setText(hour + ":" + minute);
                     }
                 });
+            }
+        });
+
+        TextView reset = view.findViewById(R.id.reset_button);
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startTime.setText(R.string.time_start);
+                endTime.setText(R.string.time_end);
             }
         });
 

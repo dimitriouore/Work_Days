@@ -172,6 +172,14 @@ public class DaysAdapter extends ListAdapter<Days, DaysAdapter.DaysHolder> {
             }
         });
 
+        holder.reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.startTime.setText(R.string.time_start);
+                holder.endTime.setText(R.string.time_end);
+            }
+        });
+
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -180,6 +188,7 @@ public class DaysAdapter extends ListAdapter<Days, DaysAdapter.DaysHolder> {
                     holder.inputLayout.setEnabled(true);
                     holder.startTime.setEnabled(true);
                     holder.endTime.setEnabled(true);
+                    holder.reset.setEnabled(true);
                 } else {
                     String date = holder.date.getText().toString();
                     String[] array = date.split("/");
@@ -202,6 +211,7 @@ public class DaysAdapter extends ListAdapter<Days, DaysAdapter.DaysHolder> {
                         holder.inputLayout.setEnabled(false);
                         holder.startTime.setEnabled(false);
                         holder.endTime.setEnabled(false);
+                        holder.reset.setEnabled(false);
                     } else if (holder.startTime.getText() == context.getText(R.string.time_start) || holder.endTime.getText() == context.getText(R.string.time_end)) {
                         Toast.makeText(context, context.getText(R.string.time_error), Toast.LENGTH_SHORT).show();
                     } else {
@@ -214,6 +224,7 @@ public class DaysAdapter extends ListAdapter<Days, DaysAdapter.DaysHolder> {
                         holder.inputLayout.setEnabled(false);
                         holder.startTime.setEnabled(false);
                         holder.endTime.setEnabled(false);
+                        holder.reset.setEnabled(false);
                     }
                 }
             }
@@ -229,6 +240,7 @@ public class DaysAdapter extends ListAdapter<Days, DaysAdapter.DaysHolder> {
         private final TextView type;
         private final TextView pay;
         private final TextView id;
+        private final TextView reset;
         private final CardView cardView;
         private final Button button;
         private final Button startTime;
@@ -250,6 +262,7 @@ public class DaysAdapter extends ListAdapter<Days, DaysAdapter.DaysHolder> {
             inputLayout = itemView.findViewById(R.id.edit_layout);
             editText = itemView.findViewById(R.id.edit_text);
             timeLayout = itemView.findViewById(R.id.time_layout);
+            reset = itemView.findViewById(R.id.reset_button);
         }
     }
 }
