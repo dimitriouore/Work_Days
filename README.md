@@ -13,7 +13,7 @@ With this app you are able to:
 
 <a href="https://play.google.com/store/apps/details?id=com.dimitriou.workdays"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="75"></a>
 
-## screenshots
+# Screenshots
 
 <img src="screenshots/Screenshot_1.png" ></img> | <img src="screenshots/Screenshot_2.png" ></img> | <img src="screenshots/Screenshot_7.png" ></img> 
 |---|---|---|
