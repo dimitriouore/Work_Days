@@ -160,7 +160,7 @@ public class MainFragment extends Fragment {
         save.setOnClickListener(v -> {
             if (type.equals(getString(R.string.error))) {
                 Toast.makeText(requireContext(), R.string.error, Toast.LENGTH_SHORT).show();
-            } else if (startTime.getText() == getText(R.string.time_start) || endTime.getText() == getText(R.string.time_end)) {
+            } else if (startTime.getText() == getText(R.string.time_start) && chipTime.isChecked() || endTime.getText() == getText(R.string.time_end) && chipTime.isChecked()) {
                 Toast.makeText(requireContext(), getText(R.string.time_error), Toast.LENGTH_SHORT).show();
             } else {
                 if (chipNotes.isChecked() && chipTime.isChecked()) {
