@@ -1,12 +1,10 @@
 package com.dimitriou.workdays;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -26,6 +24,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
 
+import java.util.Objects;
+
 public class MainFragment extends Fragment {
 
     String type = "";
@@ -36,6 +36,7 @@ public class MainFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
@@ -74,123 +75,115 @@ public class MainFragment extends Fragment {
         Button endTime = view.findViewById(R.id.time_end);
         LinearLayout timeLayout = view.findViewById(R.id.time_layout);
 
-        chipNotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (chipNotes.isChecked()) {
-                    notesLayout.setVisibility(View.VISIBLE);
-                } else {
-                    notesLayout.setVisibility(View.GONE);
-                    editText.setText("");
-                }
+        chipNotes.setOnClickListener(v -> {
+            if (chipNotes.isChecked()) {
+                notesLayout.setVisibility(View.VISIBLE);
+            } else {
+                notesLayout.setVisibility(View.GONE);
+                editText.setText("");
             }
         });
-        chipTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (chipTime.isChecked()) {
-                    timeLayout.setVisibility(View.VISIBLE);
-                } else {
-                    timeLayout.setVisibility(View.GONE);
-                    startTime.setText(R.string.time_start);
-                    endTime.setText(R.string.time_end);
-                }
-            }
-        });
-
-        startTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
-                        .setTimeFormat(TimeFormat.CLOCK_24H)
-                        .build();
-                timePicker.show(requireActivity().getSupportFragmentManager(), "timePicker");
-                timePicker.addOnPositiveButtonClickListener(new View.OnClickListener() {
-                    @SuppressLint("SetTextI18n")
-                    @Override
-                    public void onClick(View v) {
-                        String minute = String.valueOf(timePicker.getMinute());
-                        String hour = String.valueOf(timePicker.getHour());
-                        if (minute.length() == 1) {
-                            minute = "0" + minute;
-                        }
-                        if (hour.length() == 1) {
-                            hour = "0" + hour;
-                        }
-                        startTime.setText(hour + ":" + minute);
-                    }
-                });
-            }
-        });
-        endTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
-                        .setTimeFormat(TimeFormat.CLOCK_24H)
-                        .build();
-                timePicker.show(requireActivity().getSupportFragmentManager(), "timePicker");
-                timePicker.addOnPositiveButtonClickListener(new View.OnClickListener() {
-                    @SuppressLint("SetTextI18n")
-                    @Override
-                    public void onClick(View v) {
-                        String minute = String.valueOf(timePicker.getMinute());
-                        String hour = String.valueOf(timePicker.getHour());
-                        if (minute.length() == 1) {
-                            minute = "0" + minute;
-                        }
-                        if (hour.length() == 1) {
-                            hour = "0" + hour;
-                        }
-                        endTime.setText(hour + ":" + minute);
-                    }
-                });
-            }
-        });
-
-        TextView reset = view.findViewById(R.id.reset_button);
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        chipTime.setOnClickListener(v -> {
+            if (chipTime.isChecked()) {
+                timeLayout.setVisibility(View.VISIBLE);
+            } else {
+                timeLayout.setVisibility(View.GONE);
                 startTime.setText(R.string.time_start);
                 endTime.setText(R.string.time_end);
             }
+        });
+
+        startTime.setOnClickListener(v -> {
+            MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
+                    .setTimeFormat(TimeFormat.CLOCK_24H)
+                    .build();
+            timePicker.show(requireActivity().getSupportFragmentManager(), "timePicker");
+            timePicker.addOnPositiveButtonClickListener(v12 -> {
+                String minute = String.valueOf(timePicker.getMinute());
+                String hour = String.valueOf(timePicker.getHour());
+                if (minute.length() == 1) {
+                    minute = "0" + minute;
+                }
+                if (hour.length() == 1) {
+                    hour = "0" + hour;
+                }
+                startTime.setText(hour + ":" + minute);
+            });
+        });
+        endTime.setOnClickListener(v -> {
+            MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
+                    .setTimeFormat(TimeFormat.CLOCK_24H)
+                    .build();
+            timePicker.show(requireActivity().getSupportFragmentManager(), "timePicker");
+            timePicker.addOnPositiveButtonClickListener(v1 -> {
+                String minute = String.valueOf(timePicker.getMinute());
+                String hour = String.valueOf(timePicker.getHour());
+                if (minute.length() == 1) {
+                    minute = "0" + minute;
+                }
+                if (hour.length() == 1) {
+                    hour = "0" + hour;
+                }
+                endTime.setText(hour + ":" + minute);
+            });
+        });
+
+        TextView reset = view.findViewById(R.id.reset_button);
+        reset.setOnClickListener(v -> {
+            startTime.setText(R.string.time_start);
+            endTime.setText(R.string.time_end);
         });
 
         Button save = view.findViewById(R.id.button_action);
         save.setOnClickListener(v -> {
             if (type.equals(getString(R.string.error))) {
                 Toast.makeText(requireContext(), R.string.error, Toast.LENGTH_SHORT).show();
-            } else if (startTime.getText() == getText(R.string.time_start) && chipTime.isChecked() || endTime.getText() == getText(R.string.time_end) && chipTime.isChecked()) {
-                Toast.makeText(requireContext(), getText(R.string.time_error), Toast.LENGTH_SHORT).show();
             } else {
                 if (chipNotes.isChecked() && chipTime.isChecked()) {
-                    days = new Days(String.valueOf(datePicker.getDayOfMonth()), String.valueOf(datePicker.getMonth() + 1),
-                            String.valueOf(datePicker.getYear()), type, "No", editText.getText().toString().trim(), startTime.getText().toString() + "-" + endTime.getText().toString());
+                    if (startTime.getText() == getText(R.string.time_start) && !(endTime.getText() == getText(R.string.time_end)) || endTime.getText() == getText(R.string.time_end) && !(startTime.getText() == getText(R.string.time_start))) {
+                        Toast.makeText(requireContext(), getText(R.string.time_error), Toast.LENGTH_SHORT).show();
+                    } else {
+                        days = new Days(String.valueOf(datePicker.getDayOfMonth()), String.valueOf(datePicker.getMonth() + 1),
+                                String.valueOf(datePicker.getYear()), type, "No", Objects.requireNonNull(editText.getText()).toString().trim(), startTime.getText().toString() + "-" + endTime.getText().toString());
+                        Save(days, chipNotes, chipTime, notesLayout, editText, startTime, endTime, timeLayout);
+                    }
                 } else if (chipNotes.isChecked()) {
                     days = new Days(String.valueOf(datePicker.getDayOfMonth()), String.valueOf(datePicker.getMonth() + 1),
-                            String.valueOf(datePicker.getYear()), type, "No", editText.getText().toString().trim(), "");
+                            String.valueOf(datePicker.getYear()), type, "No", Objects.requireNonNull(editText.getText()).toString().trim(), "");
+                    Save(days, chipNotes, chipTime, notesLayout, editText, startTime, endTime, timeLayout);
                 } else if (chipTime.isChecked()) {
-                    days = new Days(String.valueOf(datePicker.getDayOfMonth()), String.valueOf(datePicker.getMonth() + 1),
-                            String.valueOf(datePicker.getYear()), type, "No", "", startTime.getText() + "-" + endTime.getText());
+                    if (startTime.getText() == getText(R.string.time_start) && !(endTime.getText() == getText(R.string.time_end)) || endTime.getText() == getText(R.string.time_end) && !(startTime.getText() == getText(R.string.time_start))) {
+                        Toast.makeText(requireContext(), getText(R.string.time_error), Toast.LENGTH_SHORT).show();
+                    } else {
+                        days = new Days(String.valueOf(datePicker.getDayOfMonth()), String.valueOf(datePicker.getMonth() + 1),
+                                String.valueOf(datePicker.getYear()), type, "No", "", startTime.getText() + "-" + endTime.getText());
+                        Save(days, chipNotes, chipTime, notesLayout, editText, startTime, endTime, timeLayout);
+                    }
                 } else {
-                    days = new Days(String.valueOf(datePicker.getDayOfMonth()), String.valueOf(datePicker.getMonth() + 1),
-                            String.valueOf(datePicker.getYear()), type, "No", "", "");
+                    if (startTime.getText() == getText(R.string.time_start) && !(endTime.getText() == getText(R.string.time_end)) || endTime.getText() == getText(R.string.time_end) && !(startTime.getText() == getText(R.string.time_start))) {
+                        Toast.makeText(requireContext(), getText(R.string.time_error), Toast.LENGTH_SHORT).show();
+                    } else {
+                        days = new Days(String.valueOf(datePicker.getDayOfMonth()), String.valueOf(datePicker.getMonth() + 1),
+                                String.valueOf(datePicker.getYear()), type, "No", "", "");
+                        Save(days, chipNotes, chipTime, notesLayout, editText, startTime, endTime, timeLayout);
+                    }
                 }
-                Repository repository = new Repository(requireActivity().getApplication());
-                repository.DaysInsert(days);
-                Toast.makeText(requireContext(), R.string.saved, Toast.LENGTH_SHORT).show();
-                chipNotes.setChecked(false);
-                chipTime.setChecked(false);
-                startTime.setText(R.string.time_start);
-                endTime.setText(R.string.time_end);
-                editText.setText("");
-                notesLayout.setVisibility(View.GONE);
-                timeLayout.setVisibility(View.GONE);
-                InputMethodManager inputMethodManager = (InputMethodManager) requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-
             }
         });
         return view;
+    }
+    private void Save(Days days, Chip chipNotes, Chip chipTime, TextInputLayout notesLayout, TextInputEditText editText,
+                      Button startTime, Button endTime, LinearLayout timeLayout) {
+
+        Repository repository = new Repository(requireActivity().getApplication());
+        repository.DaysInsert(days);
+        Toast.makeText(requireContext(), R.string.saved, Toast.LENGTH_SHORT).show();
+        chipNotes.setChecked(false);
+        chipTime.setChecked(false);
+        notesLayout.setVisibility(View.GONE);
+        editText.setText("");
+        startTime.setText(R.string.time_start);
+        endTime.setText(R.string.time_end);
+        timeLayout.setVisibility(View.GONE);
     }
 }

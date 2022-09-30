@@ -2,7 +2,6 @@ package com.dimitriou.workdays.AdapterViewModel;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,137 +94,103 @@ public class DaysAdapter extends ListAdapter<Days, DaysAdapter.DaysHolder> {
 
         holder.id.setText(String.valueOf(currentDay.getId()));
 
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (holder.inputLayout.getVisibility() == View.VISIBLE) {
-                    holder.button.setVisibility(View.GONE);
-                    holder.inputLayout.setVisibility(View.GONE);
-                    holder.timeLayout.setVisibility(View.GONE);
-                } else {
-                    holder.button.setVisibility(View.VISIBLE);
-                    holder.inputLayout.setVisibility(View.VISIBLE);
-                    holder.timeLayout.setVisibility(View.VISIBLE);
+        holder.cardView.setOnClickListener(v -> {
+            if (holder.inputLayout.getVisibility() == View.VISIBLE) {
+                holder.button.setVisibility(View.GONE);
+                holder.inputLayout.setVisibility(View.GONE);
+                holder.timeLayout.setVisibility(View.GONE);
+            } else {
+                holder.button.setVisibility(View.VISIBLE);
+                holder.inputLayout.setVisibility(View.VISIBLE);
+                holder.timeLayout.setVisibility(View.VISIBLE);
+            }
+        });
+
+        holder.startTime.setOnClickListener(v -> {
+            MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
+                    .setTimeFormat(TimeFormat.CLOCK_24H)
+                    .build();
+            timePicker.show(((MainActivity) context).getSupportFragmentManager(), "timePicker");
+            timePicker.addOnPositiveButtonClickListener(v12 -> {
+                String minute = String.valueOf(timePicker.getMinute());
+                String hour = String.valueOf(timePicker.getHour());
+                if (minute.length() == 1) {
+                    minute = "0" + minute;
                 }
-            }
+                if (hour.length() == 1) {
+                    hour = "0" + hour;
+                }
+                holder.startTime.setText(hour + ":" + minute);
+            });
         });
 
-        holder.startTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
-                        .setTimeFormat(TimeFormat.CLOCK_24H)
-                        .build();
-                timePicker.show(((MainActivity) context).getSupportFragmentManager(), "timePicker");
-                timePicker.addOnPositiveButtonClickListener(new View.OnClickListener() {
-                    @SuppressLint("SetTextI18n")
-                    @Override
-                    public void onClick(View v) {
-                        String minute = String.valueOf(timePicker.getMinute());
-                        String hour = String.valueOf(timePicker.getHour());
-                        if (minute.length() == 1) {
-                            minute = "0" + minute;
-                        }
-                        if (hour.length() == 1) {
-                            hour = "0" + hour;
-                        }
-                        holder.startTime.setText(hour + ":" + minute);
-                    }
-                });
-                timePicker.addOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        holder.startTime.setText(R.string.time_start);
-                    }
-                });
-            }
+        holder.endTime.setOnClickListener(v -> {
+            MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
+                    .setTimeFormat(TimeFormat.CLOCK_24H)
+                    .build();
+            timePicker.show(((MainActivity) context).getSupportFragmentManager(), "timePicker");
+            timePicker.addOnPositiveButtonClickListener(v1 -> {
+                String minute = String.valueOf(timePicker.getMinute());
+                String hour = String.valueOf(timePicker.getHour());
+                if (minute.length() == 1) {
+                    minute = "0" + minute;
+                }
+                if (hour.length() == 1) {
+                    hour = "0" + hour;
+                }
+                holder.endTime.setText(hour + ":" + minute);
+            });
         });
 
-        holder.endTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
-                        .setTimeFormat(TimeFormat.CLOCK_24H)
-                        .build();
-                timePicker.show(((MainActivity) context).getSupportFragmentManager(), "timePicker");
-                timePicker.addOnPositiveButtonClickListener(new View.OnClickListener() {
-                    @SuppressLint("SetTextI18n")
-                    @Override
-                    public void onClick(View v) {
-                        String minute = String.valueOf(timePicker.getMinute());
-                        String hour = String.valueOf(timePicker.getHour());
-                        if (minute.length() == 1) {
-                            minute = "0" + minute;
-                        }
-                        if (hour.length() == 1) {
-                            hour = "0" + hour;
-                        }
-                        holder.endTime.setText(hour + ":" + minute);
-                    }
-                });
-                timePicker.addOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        holder.endTime.setText(R.string.time_end);
-                    }
-                });
-            }
+        holder.reset.setOnClickListener(v -> {
+            holder.startTime.setText(R.string.time_start);
+            holder.endTime.setText(R.string.time_end);
         });
 
-        holder.reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.startTime.setText(R.string.time_start);
-                holder.endTime.setText(R.string.time_end);
-            }
-        });
+        holder.button.setOnClickListener(v -> {
+            if (holder.button.getText().equals(("Edit")) || holder.button.getText().equals(("Επεξεργασία"))) {
+                holder.button.setText(R.string.save);
+                holder.inputLayout.setEnabled(true);
+                holder.startTime.setEnabled(true);
+                holder.endTime.setEnabled(true);
+                holder.reset.setEnabled(true);
+            } else {
+                String date = holder.date.getText().toString();
+                String[] array = date.split("/");
 
-        holder.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (holder.button.getText().equals(("Edit")) || holder.button.getText().equals(("Επεξεργασία"))) {
-                    holder.button.setText(R.string.save);
-                    holder.inputLayout.setEnabled(true);
-                    holder.startTime.setEnabled(true);
-                    holder.endTime.setEnabled(true);
-                    holder.reset.setEnabled(true);
+                String pay1;
+                if (holder.pay.getVisibility() == View.VISIBLE) {
+                    pay1 = "Yes";
                 } else {
-                    String date = holder.date.getText().toString();
-                    String[] array = date.split("/");
+                    pay1 = "No";
+                }
 
-                    String pay;
-                    if (holder.pay.getVisibility() == View.VISIBLE) {
-                        pay = "Yes";
-                    } else {
-                        pay = "No";
-                    }
-
-                    Repository repository = new Repository(((MainActivity) context).getApplication());
-                    if (holder.startTime.getText() == context.getText(R.string.time_start) && holder.endTime.getText() == context.getText(R.string.time_end)) {
-                        Days days = new Days(array[0], array[1], array[2], holder.type.getText().toString(), pay,
-                                Objects.requireNonNull(holder.editText.getText()).toString(), "");
-                        days.setId(Integer.parseInt(holder.id.getText().toString()));
-                        repository.Update(days);
-                        Toast.makeText(context, R.string.updated, Toast.LENGTH_SHORT).show();
-                        holder.button.setText(R.string.edit);
-                        holder.inputLayout.setEnabled(false);
-                        holder.startTime.setEnabled(false);
-                        holder.endTime.setEnabled(false);
-                        holder.reset.setEnabled(false);
-                    } else if (holder.startTime.getText() == context.getText(R.string.time_start) || holder.endTime.getText() == context.getText(R.string.time_end)) {
-                        Toast.makeText(context, context.getText(R.string.time_error), Toast.LENGTH_SHORT).show();
-                    } else {
-                        Days days = new Days(array[0], array[1], array[2], holder.type.getText().toString(), pay,
-                                Objects.requireNonNull(holder.editText.getText()).toString(), holder.startTime.getText() + "-" + holder.endTime.getText());
-                        days.setId(Integer.parseInt(holder.id.getText().toString()));
-                        repository.Update(days);
-                        Toast.makeText(context, R.string.updated, Toast.LENGTH_SHORT).show();
-                        holder.button.setText(R.string.edit);
-                        holder.inputLayout.setEnabled(false);
-                        holder.startTime.setEnabled(false);
-                        holder.endTime.setEnabled(false);
-                        holder.reset.setEnabled(false);
-                    }
+                Repository repository = new Repository(((MainActivity) context).getApplication());
+                if (holder.startTime.getText() == context.getText(R.string.time_start) && holder.endTime.getText() == context.getText(R.string.time_end)) {
+                    Days days = new Days(array[0], array[1], array[2], holder.type.getText().toString(), pay1,
+                            Objects.requireNonNull(holder.editText.getText()).toString(), "");
+                    days.setId(Integer.parseInt(holder.id.getText().toString()));
+                    repository.Update(days);
+                    Toast.makeText(context, R.string.updated, Toast.LENGTH_SHORT).show();
+                    holder.button.setText(R.string.edit);
+                    holder.inputLayout.setEnabled(false);
+                    holder.startTime.setEnabled(false);
+                    holder.endTime.setEnabled(false);
+                    holder.reset.setEnabled(false);
+                } else if (holder.startTime.getText() == context.getText(R.string.time_start) && !(holder.endTime.getText() == context.getText(R.string.time_end)) ||
+                        holder.endTime.getText() == context.getText(R.string.time_end) && !(holder.startTime.getText() == context.getText(R.string.time_start))) {
+                    Toast.makeText(context, context.getText(R.string.time_error), Toast.LENGTH_SHORT).show();
+                } else {
+                    Days days = new Days(array[0], array[1], array[2], holder.type.getText().toString(), pay1,
+                            Objects.requireNonNull(holder.editText.getText()).toString(), holder.startTime.getText() + "-" + holder.endTime.getText());
+                    days.setId(Integer.parseInt(holder.id.getText().toString()));
+                    repository.Update(days);
+                    Toast.makeText(context, R.string.updated, Toast.LENGTH_SHORT).show();
+                    holder.button.setText(R.string.edit);
+                    holder.inputLayout.setEnabled(false);
+                    holder.startTime.setEnabled(false);
+                    holder.endTime.setEnabled(false);
+                    holder.reset.setEnabled(false);
                 }
             }
         });

@@ -1,6 +1,5 @@
 package com.dimitriou.workdays;
 
-import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
