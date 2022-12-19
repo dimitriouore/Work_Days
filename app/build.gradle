@@ -11,8 +11,8 @@ android {
         targetSdkVersion 33
         versionCode 10
         versionName "2.5.3"
+        resConfigs 'en', 'el'
 
-        resConfigs "en", "el"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
